@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu STVlnt</title>
+    <div class="header">Veux-tu être ma copine ?</div>
+    <style>
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: white;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        }
+        .button-container {
+            display: flex;
+            gap: 20px; /* Default gap */
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        }
+        .btn1 {
+            background-color: red;
+            color: white;
+        }
+        .btn2 {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button id="btn1" class="btn btn1">Non</button>
+        <button id="btn2" class="btn btn2">Oui</button>
+    </div>
+    <script>
+         // Predefined sentences
+         const randomSentences = [
+            "T'es sûre ?",
+            "Vraiment sûre ?",
+            "Tu veux même pas essayer ?",
+            "Vraiment ?",
+            "Vraiment sûre ?",
+            "Vraiment vraiment sûre ?",
+            "Allez au fond je le sais",
+            "Même pas un peu ?",
+        ];
+        function makeBigger(button) {
+            let currentScale = button.style.transform.match(/scale\((.*?)\)/);
+            let scaleValue = currentScale ? parseFloat(currentScale[1]) : 1;
+            let newScale = scaleValue + 0.5;
+            
+            button.style.transform = `scale(${newScale})`; // Increase scale by 0.5
+
+            // Get the current click count from the button text
+            let clickCount = parseInt(button.getAttribute("data-clicks") || "0") + 1;
+            button.setAttribute("data-clicks", clickCount); // Store updated count
+
+            // Pick a random sentence from the array
+            let randomText = randomSentences[Math.floor(Math.random() * randomSentences.length)];
+
+            // Update button text
+            button.textContent = randomText;
+            let moveDistance = newScale * 20; // Adjust the distance dynamically
+            otherButton.style.marginLeft = `${moveDistance}px`;
+    
+        }
+
+        document.getElementById("btn1").addEventListener("click", function() {
+            makeBigger(this);
+        });
+
+        document.getElementById("btn2").addEventListener("click", function() {
+            alert("Awwww moi aussi jtm ;)!");
+        });
+    </script>
+
+</body>
+</html>
