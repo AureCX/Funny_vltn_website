@@ -77,8 +77,13 @@
 
             // Update button text
             button.textContent = randomText;
-            let moveDistance = newScale * 20; // Adjust the distance dynamically
-            otherButton.style.marginLeft = `${moveDistance}px`;
+            
+            // Get button width to move the other button dynamically
+            let buttonRect = button.getBoundingClientRect();
+            let newButtonWidth = buttonRect.width;  // New width after growing
+
+            // Move the other button exactly to the edge of the growing button
+            otherButton.style.marginLeft = `${newButtonWidth / 2}px`;
     
         }
 
