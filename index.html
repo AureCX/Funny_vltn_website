@@ -64,7 +64,7 @@
         function makeBigger(button) {
             let currentScale = button.style.transform.match(/scale\((.*?)\)/);
             let scaleValue = currentScale ? parseFloat(currentScale[1]) : 1;
-            let newScale = scaleValue + 0.5;
+            let newScale = scaleValue + 0.2;
             
             button.style.transform = `scale(${newScale})`; // Increase scale by 0.5
 
